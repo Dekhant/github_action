@@ -8,10 +8,12 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    container:
+      image: dart:stable
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: cd test && dart pub get
       - name: Run tests
         run: |
-          cd test && dart pub run test
+          cd test && dart run test
