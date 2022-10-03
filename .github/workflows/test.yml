@@ -1,0 +1,28 @@
+# name: GenerateTests
+
+# on:
+#   workflow_dispatch:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
+
+# jobs:
+#   generate_tests:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#       - uses: subosito/flutter-action@v2
+#         with:
+#           channel: 'stable'
+#       - name: Build pages
+#         run: |
+#           cd work
+#           flutter pub get
+#           flutter build web
+#       - name: Deploy
+#         uses: peaceiris/actions-gh-pages@v3
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           publish_dir: ./work/build/web
+
