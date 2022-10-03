@@ -21,4 +21,4 @@ jobs:
         run: cd github_tests && dart pub get
       - name: Run tests
         run: |
-          dart run test
+          cd github_tests && dart run test
