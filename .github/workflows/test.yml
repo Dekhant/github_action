@@ -18,7 +18,7 @@ jobs:
           sdk: ${{ matrix.sdk }}
       - uses: actions/checkout@v2
       - name: Install dependencies
-        run: cd test && dart pub get
+        run: cd github_tests && dart pub get
       - name: Run tests
         run: |
-          cd github_tests && dart run test
+          dart run test
