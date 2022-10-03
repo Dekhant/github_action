@@ -1,5 +1,4 @@
-name: run test
-
+name: Tests
 on:
   push:
     branches: [main]
