@@ -8,12 +8,17 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    container:
-      image: dart:stable
+    strategy:
+      matrix:
+        sdk: [stable, 2.17.6]
     steps:
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@v1.3
+        with:
+          sdk: ${{ matrix.sdk }}
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: cd test && dart pub get
       - name: Run tests
         run: |
-          cd test && dart run test
+          cd github_tests && dart run test
