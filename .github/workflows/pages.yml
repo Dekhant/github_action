@@ -3,8 +3,9 @@ name: Pages
 on:
   workflow_run:
     workflows: [Tests]
-    branches: [ main ]
-    types: [completed]
+    branches: [ "main" ]
+    types: 
+      - completed
   push:
     branches: [ "main" ]
 
