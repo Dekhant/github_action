@@ -5,14 +5,14 @@ on:
     workflows: [Tests]
     branches: [ "main" ]
     types: 
-      - requested
+      - completed
   push:
     branches: [ "main" ]
 
 jobs:
   pages:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
