@@ -12,20 +12,22 @@ on:
 jobs:
   pages:
     runs-on: ubuntu-latest
+      defaults:
+      run:
+        working-directory: ./work
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+      - name: Dependen
+        run: flutter pub get
       - name: Build pages
-        run: |
-          cd work
-          flutter pub get
-          flutter build web
+        run: flutter build web
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./work/build/web
+          publish_dir: build/web
 
