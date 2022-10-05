@@ -12,7 +12,7 @@ on:
 jobs:
   pages:
     runs-on: ubuntu-latest
-      defaults:
+    defaults:
       run:
         working-directory: ./work
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
